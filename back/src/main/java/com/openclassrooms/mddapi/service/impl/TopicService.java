@@ -1,23 +1,22 @@
-package com.openclassrooms.mddapi.service;
+package com.openclassrooms.mddapi.service.impl;
 
 import java.util.List;
 
+import com.openclassrooms.mddapi.service.ITopicService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.repository.TopicRepository;
 
 @Service
+@AllArgsConstructor
 public class TopicService implements ITopicService {
 
 	private TopicRepository topicRepository;
-	
-	public TopicService(TopicRepository topicRepository) {
-		this.topicRepository = topicRepository;
-	}
 
 	@Override
-	public List<Topic> getTopics() {
+	public List<Topic> getAllTopics() {
 		return topicRepository.findAll();
 	}
 	

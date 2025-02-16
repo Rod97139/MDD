@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
+import com.openclassrooms.mddapi.payload.request.UserLoginRequest;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.service.IUserService;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,17 @@ public class UserService implements IUserService {
         );
 
         return UserMapper.mapFromUserToUserDto(user);
+    }
+
+    public UserDto logUser(UserLoginRequest userLogin) {
+        User user = userRepository.findByEmail(userLogin.getEmail()).orElseThrow(
+                () -> new ResourceNotFoundException("User not found with email: " + userLogin.getEmail())
+        );
+        if (passwordEncoder.matches(userLogin.getPassword(), user.getPassword())) {
+            return UserMapper.mapFromUserToUserDto(user);
+        } else {
+            throw new ResourceNotFoundException("Password incorrect: " + userLogin.getPassword());
+        }
     }
 
     @Override

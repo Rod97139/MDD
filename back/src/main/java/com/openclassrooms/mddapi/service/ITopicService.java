@@ -6,6 +6,6 @@ import com.openclassrooms.mddapi.model.Topic;
 
 public interface ITopicService {
 
-	List<Topic> getTopics();
+	List<Topic> getAllTopics();
 
 }

@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,7 +31,23 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name = "topic_id")
 	private Topic topic;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@Column(name = "title", nullable = false)
+	private String title;
+
+	@Column(name = "content", nullable = false)
+	private String content;
+
+	@Column(name = "created_at", nullable = false)
+	private LocalDateTime createdAt;
+
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
+
 	// TODO : to finish...
 
 
