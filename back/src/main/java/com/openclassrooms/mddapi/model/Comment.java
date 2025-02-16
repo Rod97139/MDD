@@ -18,7 +18,7 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "comment_id")
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@Column(name = "content", nullable = false)
@@ -33,6 +33,10 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name = "post_id")
 	private Post post;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	// TODO : to finish...
 
