@@ -29,7 +29,7 @@ public class Topic {
 	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
+	@Column()
 	private String description;
 
 	@Column(name = "created_at", nullable = false)
