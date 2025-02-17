@@ -2,7 +2,9 @@ package com.openclassrooms.mddapi.mapper;
 
 
 import com.openclassrooms.mddapi.dto.UserDto;
+import com.openclassrooms.mddapi.dto.payload.response.UserDisplayDto;
 import com.openclassrooms.mddapi.model.User;
+import com.openclassrooms.mddapi.utils.DateUtils;
 
 public class UserMapper {
     public static UserDto mapFromUserToUserDto(User user) {
@@ -24,6 +26,16 @@ public class UserMapper {
                 userDto.getPassword(),
                 userDto.getCreatedAt(),
                 userDto.getUpdatedAt()
+        );
+    }
+
+    public static UserDisplayDto mapFromUserToUserDisplayDto(User user) {
+        return new UserDisplayDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                DateUtils.formatInstant(user.getCreatedAt()),
+                DateUtils.formatInstant(user.getUpdatedAt())
         );
     }
 }

@@ -3,8 +3,10 @@ package com.openclassrooms.mddapi.controller;
 import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
 import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
+import com.openclassrooms.mddapi.dto.payload.response.UserDisplayDto;
 import com.openclassrooms.mddapi.service.JWTService;
 import com.openclassrooms.mddapi.service.impl.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +37,12 @@ public class AuthController {
          }
 
         return new ResponseEntity<>(jwtService.generateToken(userLoginRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserDisplayDto> me(HttpServletRequest request) {
+        String token = request.getHeader("Authorization").substring(7);
+        String email = jwtService.getSubjectFromToken(token);
+        return new ResponseEntity<>(userService.getUserDisplayByEmail(email), HttpStatus.OK);
     }
 }

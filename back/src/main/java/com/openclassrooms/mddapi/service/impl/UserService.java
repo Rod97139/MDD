@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.service.impl;
 
 import com.openclassrooms.mddapi.dto.UserDto;
+import com.openclassrooms.mddapi.dto.payload.response.UserDisplayDto;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
@@ -66,5 +67,15 @@ public class UserService implements IUserService {
         );
 
         return UserMapper.mapFromUserToUserDto(user);
+    }
+
+    @Override
+    public UserDisplayDto getUserDisplayByEmail(String email) {
+
+        User user = userRepository.findByEmail(email).orElseThrow(
+                () -> new ResourceNotFoundException("User not found with email: " + email)
+        );
+
+        return UserMapper.mapFromUserToUserDisplayDto(user);
     }
 }
