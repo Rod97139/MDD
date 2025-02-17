@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.payload.request;
+package com.openclassrooms.mddapi.dto.payload.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

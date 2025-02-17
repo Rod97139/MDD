@@ -23,7 +23,7 @@ public class Topic {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "topic_id")
+	@Column(name = "id", nullable = false)
 	private Long id;
 	
 	@Column(nullable = false)
