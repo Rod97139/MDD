@@ -1,8 +1,8 @@
 package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.dto.UserDto;
-import com.openclassrooms.mddapi.payload.request.UserLoginRequest;
-import com.openclassrooms.mddapi.payload.response.TokenResponse;
+import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
+import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
 import com.openclassrooms.mddapi.service.JWTService;
 import com.openclassrooms.mddapi.service.impl.UserService;
 import lombok.AllArgsConstructor;

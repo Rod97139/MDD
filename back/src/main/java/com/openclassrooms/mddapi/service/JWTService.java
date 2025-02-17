@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
-import com.openclassrooms.mddapi.payload.request.UserLoginRequest;
-import com.openclassrooms.mddapi.payload.response.TokenResponse;
+import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
+import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.*;

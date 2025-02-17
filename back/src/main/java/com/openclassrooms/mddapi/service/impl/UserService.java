@@ -4,7 +4,7 @@ import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
-import com.openclassrooms.mddapi.payload.request.UserLoginRequest;
+import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.service.IUserService;
 import lombok.AllArgsConstructor;
