@@ -19,5 +19,10 @@ public class TopicService implements ITopicService {
 	public List<Topic> getAllTopics() {
 		return topicRepository.findAll();
 	}
-	
+
+	@Override
+	public Topic getTopicByName(String topic) {
+		return topicRepository.findByName(topic);
+	}
+
 }

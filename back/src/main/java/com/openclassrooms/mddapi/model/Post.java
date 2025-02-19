@@ -27,7 +27,13 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", nullable = false)
 	private Long id;
-	
+
+	@Column(name = "title", nullable = false)
+	private String title;
+
+	@Column(name = "content", nullable = false)
+	private String content;
+
 	@ManyToOne
 	@JoinColumn(name = "topic_id")
 	private Topic topic;
@@ -35,12 +41,6 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
-	@Column(name = "title", nullable = false)
-	private String title;
-
-	@Column(name = "content", nullable = false)
-	private String content;
 
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
