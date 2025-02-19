@@ -5,13 +5,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { TopicComponent } from './topic/topic.component';
+import { TopicComponent } from './pages/topic/topic.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 import {JwtInterceptor} from "./interceptors/jwt.interceptor";
+import {MatFormField, MatSuffix} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const materialModule = [
   MatButtonModule,
@@ -31,7 +34,11 @@ const materialModule = [
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ...materialModule
+    ...materialModule,
+    MatFormField,
+    MatInput,
+    MatSuffix,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync(),
