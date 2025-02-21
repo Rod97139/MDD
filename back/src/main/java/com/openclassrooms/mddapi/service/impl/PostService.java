@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.service.impl;
 
 import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.payload.request.CreatePostRequest;
+import com.openclassrooms.mddapi.dto.payload.response.PostDiplayResponse;
 import com.openclassrooms.mddapi.mapper.PostMapper;
 import com.openclassrooms.mddapi.mapper.TopicMapper;
 import com.openclassrooms.mddapi.mapper.UserMapper;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -33,19 +35,27 @@ public class PostService implements IPostService {
 		User author = UserMapper.mapFromUserDtoToUser(userService.getUserByEmail(createPostRequest.getEmail()));
 		Topic topic = TopicMapper.mapFromTopicDtoToTopic(topicService.getTopicByName(createPostRequest.getTopic()));
 
-		PostDto postDto = new PostDto();
-		postDto.setId(null);
-		postDto.setTitle(createPostRequest.getTitle());
-		postDto.setContent(createPostRequest.getContent());
-		postDto.setTopic(topic);
-		postDto.setUser(author);
-		postDto.setCreatedAt(now);
-		postDto.setUpdatedAt(now);
-
+		PostDto postDto = new PostDto(
+				null,
+				createPostRequest.getTitle(),
+				createPostRequest.getContent(),
+				topic,
+				author,
+				now,
+				now
+		);
 		Post post = PostMapper.mapFromPostDtoToPost(postDto);
 		Post SavedPost = postRepository.save(post);
 
 		return PostMapper.mapFromPostToPostDto(SavedPost);
 	}
 
+	@Override
+	public List<PostDiplayResponse> getAllPosts() {
+		List<Post> posts = postRepository.findAll();
+
+        return posts.stream()
+                .map(PostMapper::mapFromPostToPostDisplayList)
+                .toList();
+	}
 }

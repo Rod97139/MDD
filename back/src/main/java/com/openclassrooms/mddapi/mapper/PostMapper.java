@@ -1,7 +1,10 @@
 package com.openclassrooms.mddapi.mapper;
 
 import com.openclassrooms.mddapi.dto.PostDto;
+import com.openclassrooms.mddapi.dto.payload.response.PostDiplayResponse;
 import com.openclassrooms.mddapi.model.Post;
+
+import java.util.List;
 
 public class PostMapper {
 
@@ -13,7 +16,8 @@ public class PostMapper {
                 postDto.getTopic(),
                 postDto.getUser(),
                 postDto.getCreatedAt(),
-                postDto.getUpdatedAt()
+                postDto.getUpdatedAt(),
+                null
         );
     }
 
@@ -27,5 +31,18 @@ public class PostMapper {
                 post.getCreatedAt(),
                 post.getUpdatedAt()
         );
+    }
+
+    public static PostDiplayResponse mapFromPostToPostDisplayList(Post post) {
+        return new PostDiplayResponse(
+                post.getId(),
+                post.getTitle(),
+                post.getContent(),
+                post.getTopic().getId(),
+                post.getUser().getId(),
+                post.getCreatedAt().toString(),
+                post.getUpdatedAt().toString()
+        );
+
     }
 }
