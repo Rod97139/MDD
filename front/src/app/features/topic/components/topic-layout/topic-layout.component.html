@@ -1,0 +1,9 @@
+<div class="topics-wrapper">
+  @for (topic of topics; track topic.id)
+  {
+    <app-topic
+      [topic]="topic"
+      [isSubscribed]="isSubscribed(topic.id)">
+    ></app-topic>
+  }
+</div>

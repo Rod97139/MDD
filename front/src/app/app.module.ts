@@ -16,6 +16,7 @@ import {MatFormField, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
+import {TopicLayoutComponent} from "./features/topic/components/topic-layout/topic-layout.component";
 
 const materialModule = [
   MatButtonModule,
@@ -30,18 +31,19 @@ const materialModule = [
     TopicComponent,
     HomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ...materialModule,
-        MatFormField,
-        MatInput,
-        MatSuffix,
-        ReactiveFormsModule,
-        PostLayoutComponent
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ...materialModule,
+    MatFormField,
+    MatInput,
+    MatSuffix,
+    ReactiveFormsModule,
+    PostLayoutComponent,
+    TopicLayoutComponent
+  ],
   providers: [
     provideAnimationsAsync(),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
