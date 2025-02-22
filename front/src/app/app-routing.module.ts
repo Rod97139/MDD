@@ -7,6 +7,7 @@ import {TopicComponent} from "./pages/topic/topic.component";
 import {CreatePostComponent} from "./pages/create-post/create-post.component";
 import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
 import {ProfilComponent} from "./pages/profil/profil.component";
+import {PostDetailsComponent} from "./pages/post-details/post-details.component";
 
 const routes: Routes = [
   {
@@ -32,9 +33,13 @@ const routes: Routes = [
   {
     path: 'post',
     canActivate: [AuthGuard],
-    component: PostLayoutComponent
+    component: HomeComponent
   },
-
+  {
+    path: 'post-details/:id',
+    canActivate: [AuthGuard],
+    component: PostDetailsComponent
+  },
   {
     path: 'create-post',
     canActivate: [AuthGuard],
