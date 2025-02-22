@@ -6,13 +6,17 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class TopicService {
 
-  private pathService = `${environment.baseUrl}post`;
+  private pathService = `${environment.baseUrl}topic`;
 
   constructor(private httpClient: HttpClient) {}
 
-  public getPosts(): Observable<any> {
+  public getTopics(): Observable<any> {
+    return this.httpClient.get(`${this.pathService}`);
+  }
+
+  public getSubTopics(): Observable<any> {
     return this.httpClient.get(`${this.pathService}/sub`);
   }
 }
