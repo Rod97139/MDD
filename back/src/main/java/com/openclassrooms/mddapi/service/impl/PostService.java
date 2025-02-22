@@ -16,7 +16,6 @@ import com.openclassrooms.mddapi.service.IUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -57,5 +56,19 @@ public class PostService implements IPostService {
         return posts.stream()
                 .map(PostMapper::mapFromPostToPostDisplayList)
                 .toList();
+	}
+
+	@Override
+	public List<PostDiplayResponse> getSubPostsByUserEmail(String email) {
+		List<User> user = List.of(UserMapper.mapFromUserDtoToUser(userService.getUserByEmail(email)));
+		List<Topic> topics = topicService.getSubscriebTopicsByUserEmail(email).stream()
+				.map(TopicMapper::mapFromTopicDtoToTopic)
+				.toList();
+
+		List<Post> posts = postRepository.findAllByUserInAndTopicIn(user, topics);
+
+		return posts.stream()
+				.map(PostMapper::mapFromPostToPostDisplayList)
+				.toList();
 	}
 }

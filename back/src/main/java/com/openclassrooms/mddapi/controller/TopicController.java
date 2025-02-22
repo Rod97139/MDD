@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.service.ITopicService;
 
-@CrossOrigin(origins = "*")
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/topic")
-@AllArgsConstructor
 public class TopicController {
 	
 	private ITopicService topicService;
@@ -70,7 +69,4 @@ public class TopicController {
 		topicService.unSubscribe(subscriptionRequest);
 		return ResponseEntity.ok(new MessageResponse("unsubscribed successfully"));
 	}
-
-	
-	
 }

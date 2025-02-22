@@ -15,6 +15,7 @@ import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import {MatFormField, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
 
 const materialModule = [
   MatButtonModule,
@@ -29,17 +30,18 @@ const materialModule = [
     TopicComponent,
     HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ...materialModule,
-    MatFormField,
-    MatInput,
-    MatSuffix,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ...materialModule,
+        MatFormField,
+        MatInput,
+        MatSuffix,
+        ReactiveFormsModule,
+        PostLayoutComponent
+    ],
   providers: [
     provideAnimationsAsync(),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
