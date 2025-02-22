@@ -33,7 +33,7 @@ public class CommentMapper {
             commentDto.getId(),
             commentDto.getContent(),
             commentDto.getPost().getId(),
-            commentDto.getUser().getId(),
+            UserMapper.mapFromUserToUserDisplayDto(commentDto.getUser()),
             commentDto.getCreatedAt().toString(),
             commentDto.getUpdatedAt().toString()
         );

@@ -37,6 +37,4 @@ public class CommentController {
         List<CommentResponse> comments = commentsDtos.stream().map(CommentMapper::toResponse).toList();
         return ResponseEntity.ok(comments);
     }
-
-
 }

@@ -13,7 +13,7 @@ public class CommentResponse {
     private Long id;
     private String content;
     private Long postId;
-    private Long userId;
+    private UserDisplayDto user;
     private String createdAt;
     private String updatedAt;
 }
