@@ -5,6 +5,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {UnauthGuard} from "./guards/unauth.guard";
 import {TopicComponent} from "./pages/topic/topic.component";
 import {CreatePostComponent} from "./pages/create-post/create-post.component";
+import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: TopicComponent
   },
+  {
+    path: 'post',
+    canActivate: [AuthGuard],
+    component: PostLayoutComponent
+  },
+
   {
     path: 'create-post',
     canActivate: [AuthGuard],
