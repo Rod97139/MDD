@@ -70,7 +70,4 @@ public class TopicController {
 		topicService.unSubscribe(subscriptionRequest);
 		return ResponseEntity.ok(new MessageResponse("unsubscribed successfully"));
 	}
-
-	
-	
 }

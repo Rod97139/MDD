@@ -1,21 +1,15 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.dto.payload.request.CreatePostRequest;
-import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
 import com.openclassrooms.mddapi.dto.payload.response.MessageResponse;
 import com.openclassrooms.mddapi.dto.payload.response.PostDiplayResponse;
-import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
-import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.service.IPostService;
 import com.openclassrooms.mddapi.service.JWTService;
-import com.openclassrooms.mddapi.service.impl.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -44,9 +38,17 @@ public class PostController {
         return new ResponseEntity<>(new MessageResponse("Post created successfully"), HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<PostDiplayResponse>> getAllPosts() {
-        return ResponseEntity.ok(postService.getAllPosts());
-    }
+//    @GetMapping
+//    public ResponseEntity<List<PostDiplayResponse>> getAllPosts() {
+//        return ResponseEntity.ok(postService.getAllPosts());
+//    }
 
+    @GetMapping("/sub")
+    public List<PostDiplayResponse> getPostsByUserEmail(
+            HttpServletRequest request
+    ) {
+        String token = request.getHeader("Authorization").substring(7);
+        String email = jwtService.getSubjectFromToken(token);
+        return postService.getSubPostsByUserEmail(email);
+    }
 }

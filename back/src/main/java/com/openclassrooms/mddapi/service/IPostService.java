@@ -12,4 +12,6 @@ public interface IPostService {
     PostDto createPost(CreatePostRequest createPostRequest);
 
     List<PostDiplayResponse> getAllPosts();
+
+    List<PostDiplayResponse> getSubPostsByUserEmail(String email);
 }
