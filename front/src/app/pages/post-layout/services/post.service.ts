@@ -15,4 +15,8 @@ export class PostService {
   public getPosts(): Observable<any> {
     return this.httpClient.get(`${this.pathService}/sub`);
   }
+
+  public createPost(post: any): Observable<any> {
+    return this.httpClient.post(`${this.pathService}`, post);
+  }
 }
