@@ -6,6 +6,7 @@ import {UnauthGuard} from "./guards/unauth.guard";
 import {TopicComponent} from "./pages/topic/topic.component";
 import {CreatePostComponent} from "./pages/create-post/create-post.component";
 import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
+import {ProfilComponent} from "./pages/profil/profil.component";
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
   {
     path: 'me',
     canActivate: [AuthGuard],
-    component: HomeComponent
+    component: ProfilComponent
   },
   {
     path: 'topic',

@@ -1,14 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../interfaces/user.interface";
-import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
-import {MatFormField, MatSuffix} from "@angular/material/form-field";
-import {MatIcon} from "@angular/material/icon";
+import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {NgIf} from "@angular/common";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/services/auth.service";
-import {LoginRequest} from "../../auth/interfaces/loginRequest.interface";
 import {UserUpdateRequest} from "../../auth/interfaces/userUpdateRequest.interface";
 
 @Component({
@@ -21,11 +18,7 @@ import {UserUpdateRequest} from "../../auth/interfaces/userUpdateRequest.interfa
     MatCardHeader,
     MatCardTitle,
     MatFormField,
-    MatIcon,
-    MatIconButton,
     MatInput,
-    MatSuffix,
-    NgIf,
     ReactiveFormsModule
   ],
   templateUrl: './profil-setup.component.html',
