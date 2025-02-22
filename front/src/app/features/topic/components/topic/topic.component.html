@@ -5,4 +5,7 @@
   <div class="topic-content">
     <p>{{ topic.description }}</p>
   </div>
+  <button mat-raised-button color="primary" (click)="toggleSubscription()">
+    {{ isSubscribed ? 'Unsubscribe' : 'Subscribe' }}
+  </button>
 </div>

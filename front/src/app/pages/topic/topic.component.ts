@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import {Router} from "@angular/router";
 import {TopicService} from "../../features/topic/services/topic.service";
 import {Topic} from "../../features/topic/interfaces/topic.interface";
 
@@ -12,15 +11,16 @@ export class TopicComponent {
 
 
   topics: Topic[] = [];
+  subscribedTopics: Topic[] = [];
 
   constructor(
-    private router: Router,
     private topicService: TopicService,
   ) {
   }
 
   ngOnInit(): void {
     this.loadTopics();
+    this.loadSubscribedTopics();
   }
 
   loadTopics(): void {
@@ -30,6 +30,17 @@ export class TopicComponent {
       },
       (error) => {
         console.error('Error fetching topics', error);
+      }
+    );
+  }
+
+  loadSubscribedTopics(): void {
+    this.topicService.getSubTopics().subscribe(
+      (data) => {
+        this.subscribedTopics = data;
+      },
+      (error) => {
+        console.error('Error fetching subscribed topics', error);
       }
     );
   }

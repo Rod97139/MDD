@@ -13,5 +13,9 @@ import {TopicComponent} from "../topic/topic.component";
 })
 export class TopicLayoutComponent {
   @Input() topics!: Topic[];
+  @Input() subscribedTopics!: Topic[];
 
+  isSubscribed(id: number) {
+    return this.subscribedTopics.some(subscribedTopic => subscribedTopic.id === id)
+  }
 }

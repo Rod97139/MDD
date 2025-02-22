@@ -19,4 +19,12 @@ export class TopicService {
   public getSubTopics(): Observable<any> {
     return this.httpClient.get(`${this.pathService}/sub`);
   }
+
+  subscribe(id: number) {
+    return this.httpClient.post(`${this.pathService}/subscribe/${id}`, {});
+  }
+
+  unsubscribe(id: number) {
+    return this.httpClient.post(`${this.pathService}/unsubscribe/${id}`, {});
+  }
 }
