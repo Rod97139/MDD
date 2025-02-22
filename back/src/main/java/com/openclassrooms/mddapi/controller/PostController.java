@@ -40,6 +40,13 @@ public class PostController {
 //        return ResponseEntity.ok(postService.getAllPosts());
 //    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDiplayResponse> getPostById(
+            @PathVariable Long id
+    ) {
+        return ResponseEntity.ok(postService.getPostById(id));
+    }
+
     @GetMapping("/sub")
     public List<PostDiplayResponse> getPostsByUserEmail(
             HttpServletRequest request

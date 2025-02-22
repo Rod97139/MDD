@@ -45,4 +45,16 @@ public class PostMapper {
         );
 
     }
+
+    public static PostDiplayResponse mapFromPostToPostDisplay(Post post) {
+        return new PostDiplayResponse(
+                post.getId(),
+                post.getTitle(),
+                post.getContent(),
+                post.getTopic().getId(),
+                post.getUser().getId(),
+                post.getCreatedAt().toString(),
+                post.getUpdatedAt().toString()
+        );
+    }
 }
