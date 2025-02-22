@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,8 @@ public class Post {
 	@Column(name = "title", nullable = false)
 	private String title;
 
-	@Column(name = "content", nullable = false)
+	@Column(name = "content", nullable = false, length = 5000)
+	@Size(max = 5000)
 	private String content;
 
 	@ManyToOne

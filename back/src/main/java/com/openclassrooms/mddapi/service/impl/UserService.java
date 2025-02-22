@@ -1,6 +1,8 @@
 package com.openclassrooms.mddapi.service.impl;
 
 import com.openclassrooms.mddapi.dto.UserDto;
+import com.openclassrooms.mddapi.dto.payload.request.UserUpdateRequest;
+import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
 import com.openclassrooms.mddapi.dto.payload.response.UserDisplayDto;
 import com.openclassrooms.mddapi.exception.ResourceNotFoundException;
 import com.openclassrooms.mddapi.mapper.UserMapper;
@@ -8,6 +10,7 @@ import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.service.IUserService;
+import com.openclassrooms.mddapi.service.JWTService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,7 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final Instant now = Instant.now();
+    private JWTService jwtService;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -77,5 +81,18 @@ public class UserService implements IUserService {
         );
 
         return UserMapper.mapFromUserToUserDisplayDto(user);
+    }
+
+    @Override
+    public TokenResponse updateUser(UserUpdateRequest userUpdateData, String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(
+                () -> new ResourceNotFoundException("User not found with email: " + email)
+        );
+        user.setName(userUpdateData.getName());
+        user.setEmail(userUpdateData.getEmail());
+        user.setUpdatedAt(now);
+        userRepository.save(user);
+
+        return jwtService.generateToken(new UserLoginRequest(user.getEmail(), user.getPassword()));
     }
 }

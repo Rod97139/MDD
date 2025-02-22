@@ -71,4 +71,10 @@ public class PostService implements IPostService {
 				.map(PostMapper::mapFromPostToPostDisplayList)
 				.toList();
 	}
+
+	@Override
+	public PostDiplayResponse getPostById(Long id) {
+		Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+		return PostMapper.mapFromPostToPostDisplay(post);
+	}
 }

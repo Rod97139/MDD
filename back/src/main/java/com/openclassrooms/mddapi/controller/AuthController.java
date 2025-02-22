@@ -2,6 +2,8 @@ package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.dto.payload.request.UserLoginRequest;
+import com.openclassrooms.mddapi.dto.payload.request.UserUpdateRequest;
+import com.openclassrooms.mddapi.dto.payload.response.MessageResponse;
 import com.openclassrooms.mddapi.dto.payload.response.TokenResponse;
 import com.openclassrooms.mddapi.dto.payload.response.UserDisplayDto;
 import com.openclassrooms.mddapi.service.JWTService;
@@ -43,5 +45,14 @@ public class AuthController {
         String token = request.getHeader("Authorization").substring(7);
         String email = jwtService.getSubjectFromToken(token);
         return new ResponseEntity<>(userService.getUserDisplayByEmail(email), HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<TokenResponse> update(@RequestBody UserUpdateRequest user, HttpServletRequest request) {
+        String token = request.getHeader("Authorization").substring(7);
+        String email = jwtService.getSubjectFromToken(token);
+        TokenResponse newToken = userService.updateUser(user, email);
+
+        return new ResponseEntity<>(newToken, HttpStatus.OK);
     }
 }

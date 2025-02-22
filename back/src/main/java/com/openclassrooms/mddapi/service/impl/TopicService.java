@@ -34,7 +34,8 @@ public class TopicService implements ITopicService {
 
 	@Override
 	public TopicDto getTopicByName(String topic) {
-		return (TopicDto) topicRepository.findByName(topic);
+		Topic topicFromDatabse = topicRepository.findByName(topic);
+		return TopicMapper.mapFromTopicToTopicDto(topicFromDatabse);
 	}
 
 	@Override

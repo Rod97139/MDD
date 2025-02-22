@@ -35,8 +35,4 @@ public class Topic {
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 
-	@OneToMany(mappedBy = "topic")
-	@JsonIgnore
-	private List<Post> posts;
-
 }

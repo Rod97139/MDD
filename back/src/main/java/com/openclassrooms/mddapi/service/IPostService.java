@@ -14,4 +14,6 @@ public interface IPostService {
     List<PostDiplayResponse> getAllPosts();
 
     List<PostDiplayResponse> getSubPostsByUserEmail(String email);
+
+    PostDiplayResponse getPostById(Long id);
 }

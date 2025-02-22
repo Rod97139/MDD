@@ -6,6 +6,7 @@ import {RegisterRequest} from "../interfaces/registerRequest.interface";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../../../environments/environment";
+import {UserUpdateRequest} from "../interfaces/userUpdateRequest.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class AuthService {
 
   public me(): Observable<User> {
     return this.httpClient.get<User>(`${this.pathService}/me`);
+  }
+
+  public update(user: UserUpdateRequest): Observable<any> {
+    return this.httpClient.put<any>(`${this.pathService}/update`, user);
   }
 }

@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ public class Comment {
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Column(name = "content", nullable = false)
+	@Column(name = "content", nullable = false, length = 5000)
+	@Size(max = 5000)
 	private String content;
 
 	@Column(name = "created_at", nullable = false)
