@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ICommentService {
     List<CommentDto> getAllComments(Long postId);
-    void createComment(CommentRequest commentRequest);
+    void createComment(CommentRequest commentRequest, String email);
 }
