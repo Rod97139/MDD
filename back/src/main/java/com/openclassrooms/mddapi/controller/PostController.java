@@ -21,17 +21,15 @@ public class PostController {
     private IPostService postService;
     private JWTService jwtService;
 
-    @PostMapping(consumes = {"multipart/form-data"})
+    @PostMapping(consumes = {"application/json"})
     public ResponseEntity<MessageResponse> createPost(
-            @RequestPart("title") String title,
-            @RequestPart("content") String content,
-            @RequestPart("topic") String topic,
+            @RequestBody CreatePostRequest createPostRequest,
             HttpServletRequest request
     ) {
         String token = request.getHeader("Authorization").substring(7);
         String email = jwtService.getSubjectFromToken(token);
 
-        CreatePostRequest createPostRequest = new CreatePostRequest(title, content, topic, email);
+        createPostRequest.setEmail(email);
 
         postService.createPost(createPostRequest);
         return new ResponseEntity<>(new MessageResponse("Post created successfully"), HttpStatus.CREATED);

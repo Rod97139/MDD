@@ -11,8 +11,7 @@ public class TopicMapper {
                 topicDto.getName(),
                 topicDto.getDescription(),
                 topicDto.getCreatedAt(),
-                topicDto.getUpdatedAt(),
-                null
+                topicDto.getUpdatedAt()
         );
     }
 
