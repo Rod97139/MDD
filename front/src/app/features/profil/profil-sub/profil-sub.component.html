@@ -1,1 +1,9 @@
-<p>profil-sub works!</p>
+<div class="topics-wrapper">
+  @for (topic of sub; track topic.id)
+  {
+    <app-topic
+      [topic]="topic"
+      [isSubscribed]="true">
+      ></app-topic>
+  }
+</div>

@@ -1,16 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User} from "../../interfaces/user.interface";
-import {AuthService} from "../../features/auth/services/auth.service";
 import {ProfilSetupComponent} from "../../features/profil/profil-setup/profil-setup.component";
 import {Topic} from "../../features/topic/interfaces/topic.interface";
 import {TopicService} from "../../features/topic/services/topic.service";
 import {Subscription} from "rxjs";
+import {ProfilSubComponent} from "../../features/profil/profil-sub/profil-sub.component";
 
 @Component({
   selector: 'app-profil',
   standalone: true,
   imports: [
-    ProfilSetupComponent
+    ProfilSetupComponent,
+    ProfilSubComponent
   ],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.scss'
