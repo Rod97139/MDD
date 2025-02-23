@@ -1,6 +1,7 @@
-<!--<div>-->
-<!--    <button mat-icon-button (click)="createPost()" [attr.aria-label]="'Create Post'">Créer un article</button>-->
-<!--</div>-->
+    <mat-select placeholder="Trier par" [(value)]="sort" (selectionChange)="sortPosts($event)">
+      <mat-option [value]="'date'">Date</mat-option>
+      <mat-option [value]="'topic'">Thème</mat-option>
+    </mat-select>
 <div class="posts-wrapper">
   @for (post of posts; track post.id)
   {

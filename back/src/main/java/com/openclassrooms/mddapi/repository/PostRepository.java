@@ -13,5 +13,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long>{
 
-    List<Post> findAllByUserInAndTopicIn(Collection<User> user, Collection<Topic> topic);
+//    List<Post> findAllByUserInAndTopicIn(Collection<User> user, Collection<Topic> topic);
+
+    List<Post> findAllByTopicIn(Collection<Topic> topic);
 }

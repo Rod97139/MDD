@@ -1,9 +1,11 @@
 @if (post)
 {
 <div class="post-container" >
+  <h2>{{ post.title }}</h2>
   <div class="post-header">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.author.name }}</p>
+    <span>{{ post.createdAt | date }} </span>
+    <span>{{ post.author.name }}</span>
+    <span>{{ post.topic.name }}</span>
   </div>
   <div class="post-content">
     <p>{{ post.content }}</p>
@@ -14,10 +16,10 @@
 @if (comments.length > 0)
 {
 <div class="comments-container">
-  <h3>Comments</h3>
+  <h3>Commentaires</h3>
   <div class="comment" *ngFor="let comment of comments">
-    <p>{{ comment.user.name }}</p>
-    <p>{{ comment.content }}</p>
+    <p class="comment-author">{{ comment.user.name }}</p>
+    <p class="comment-content">{{ comment.content }}</p>
   </div>
 </div>
 }
@@ -25,18 +27,14 @@
 <div class="comment-form">
   <mat-card-content>
   <form [formGroup]="form" (ngSubmit)="submitComment()">
-    <mat-form-field fxFlex>
+    <mat-form-field>
     <textarea formControlName="content" matInput name="comment" placeholder="Write a comment"></textarea>
     </mat-form-field>
-    <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+    <button class="send-comment" mat-raised-button type="submit" [disabled]="form.invalid">
+      <img  ngSrc="assets/send.svg" alt="send" height="20" width="20"/>
+    </button>
   </form>
   </mat-card-content>
-<!--<div class="comments-container">-->
-<!--  <h3>Comments</h3>-->
-<!--  <div class="comment" *ngFor="let comment of comments">-->
-<!--    <p>{{ comment.author }}</p>-->
-<!--    <p>{{ comment.content }}</p>-->
-<!--  </div>-->
-<!--</div>-->
+</div>
 
 

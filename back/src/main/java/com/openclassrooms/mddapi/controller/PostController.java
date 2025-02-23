@@ -53,6 +53,8 @@ public class PostController {
     ) {
         String token = request.getHeader("Authorization").substring(7);
         String email = jwtService.getSubjectFromToken(token);
-        return postService.getSubPostsByUserEmail(email);
+//        return postService.getSubPostsByUserEmail(email);
+        List<PostDiplayResponse> posts = postService.getSubPostsByUserEmail(email);
+        return posts;
     }
 }

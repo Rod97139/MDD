@@ -65,7 +65,7 @@ public class PostService implements IPostService {
 				.map(TopicMapper::mapFromTopicDtoToTopic)
 				.toList();
 
-		List<Post> posts = postRepository.findAllByUserInAndTopicIn(user, topics);
+		List<Post> posts = postRepository.findAllByTopicIn(topics);
 
 		return posts.stream()
 				.map(PostMapper::mapFromPostToPostDisplayList)

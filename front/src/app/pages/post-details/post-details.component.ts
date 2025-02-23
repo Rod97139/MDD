@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PostService} from "../post-layout/services/post.service";
 import {Post} from "../post-layout/interfaces/post.interface";
-import {NgForOf} from "@angular/common";
+import {DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
 import {CommentService} from "../../features/comment/services/comment.service";
 import {Comment} from "../../features/comment/interfaces/comment.interface";
 import {lastValueFrom, Subscription, take} from "rxjs";
@@ -21,7 +21,9 @@ import {MatCardContent} from "@angular/material/card";
     MatButton,
     MatInput,
     MatFormField,
-    MatCardContent
+    MatCardContent,
+    DatePipe,
+    NgOptimizedImage
   ],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.scss'
