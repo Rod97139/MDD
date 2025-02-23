@@ -30,7 +30,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SpringSecurityConfig {
 
-    @Value("${jwt.secret.key}")
+    @Value("${JWT_SECRET}")
     private String jwtKey;
 
     @Autowired
