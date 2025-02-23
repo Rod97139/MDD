@@ -26,11 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.sessionService.$isLogged();
   }
 
-  public logout(): void {
-    this.sessionService.logOut();
-    this.router.navigate([''])
-  }
-
   public autoLog(): void {
     this.$me = this.authService.me().subscribe(
       (user: User) => {
