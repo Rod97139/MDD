@@ -14,7 +14,7 @@ public class PostDiplayResponse {
     private String title;
     private String content;
     private Long topic;
-    private Long author;
+    private UserDisplayDto author;
     private String createdAt;
     private String updatedAt;
 }
