@@ -7,6 +7,8 @@ import {MatInput} from "@angular/material/input";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/services/auth.service";
 import {UserUpdateRequest} from "../../auth/interfaces/userUpdateRequest.interface";
+import {Router} from "@angular/router";
+import {SessionService} from "../../../services/session.service";
 
 @Component({
   selector: 'app-profil-setup',
@@ -36,6 +38,8 @@ export class ProfilSetupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private router: Router,
+    private sessionService: SessionService
   ) {}
 
   loadMe(): void {
@@ -46,6 +50,11 @@ export class ProfilSetupComponent implements OnInit {
         email: user.email
       });
     });
+  }
+
+  public logout(): void {
+    this.sessionService.logOut();
+    this.router.navigate([''])
   }
 
   submit(): void {

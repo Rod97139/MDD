@@ -1,0 +1,27 @@
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-container {
+  .mdd-main-logo {
+    @media screen and (max-width: 630px) {
+      width: 86.5vw;
+      height: 50vw;
+    }
+  }
+  .login-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    @media screen and (max-width: 630px) {
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
+    }
+  }
+}

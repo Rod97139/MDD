@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {PostService} from "./services/post.service";
 import {PostComponent} from "./post/post.component";
 import {Post} from "./interfaces/post.interface";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-post-layout',
@@ -13,9 +14,10 @@ import {Post} from "./interfaces/post.interface";
   templateUrl: './post-layout.component.html',
   styleUrl: './post-layout.component.scss'
 })
-export class PostLayoutComponent implements OnInit {
+export class PostLayoutComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
+  private $post!: Subscription;
 
   constructor(
     private router: Router,
@@ -28,7 +30,7 @@ export class PostLayoutComponent implements OnInit {
   }
 
   loadPosts(): void {
-    this.postService.getPosts().subscribe(
+    this.$post = this.postService.getPosts().subscribe(
       (data) => {
         this.posts = data;
       },
@@ -38,7 +40,7 @@ export class PostLayoutComponent implements OnInit {
     );
   }
 
-  createPost() {
-    this.router.navigate(['/create-post']);
+  ngOnDestroy(): void {
+    this.$post.unsubscribe();
   }
 }
