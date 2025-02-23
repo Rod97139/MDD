@@ -1,11 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {Topic} from "../../interfaces/topic.interface";
 import {TopicService} from "../../services/topic.service";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-topic',
   standalone: true,
-  imports: [],
+  imports: [
+    MatButton
+  ],
   templateUrl: './topic.component.html',
   styleUrl: './topic.component.scss'
 })
