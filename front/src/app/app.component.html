@@ -9,14 +9,19 @@
           class="home-logo link"
           height="81" width="140"/>
         <div class="header-links">
-        <span routerLink="post" class="link">Articles</span>
-        <span routerLink="topic" class="link">Thèmes</span>
-        <span class="profile-icon-container link" routerLink="me">
-          <img class="profile-icon" ngSrc="assets/icon_user.svg"  alt="profile" height="30" width="27"/>
-        </span>
-      </div>
+          <span routerLink="post" class="link">Articles</span>
+          <span routerLink="topic" class="link">Thèmes</span>
+          <span class="profile-icon-container link" routerLink="me">
+            <img class="profile-icon" ngSrc="assets/icon_user.svg"  alt="profile" height="30" width="27"/>
+          </span>
+
+        </div>
+        <span (click)="toggleMenu()" class="menu-hamburger">
+            ≡
+          </span>
       </mat-toolbar>
     }
+
   <div>
     <router-outlet></router-outlet>
   </div>
