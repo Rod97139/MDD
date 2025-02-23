@@ -1,34 +1,10 @@
-<!--<div class="center">-->
-<!--  <img src="/assets/logo_p6.png" alt="logo" />-->
-<!--  <h1>Welcome to MDD</h1>-->
-<!--  <button mat-raised-button color="primary" (click)="start()">Commencer</button>-->
-<!--</div>-->
 
-<button mat-icon-button (click)="createPost()" [attr.aria-label]="'Create Post'">Créer un article</button>
-
-<app-post-layout></app-post-layout>
-
-<!--<div class="login" fxLayout="row" fxLayoutAlign="center center">-->
-<!--  <mat-card>-->
-<!--    <mat-card-header fxLayoutAlign="center center">-->
-<!--      <mat-card-title>Login</mat-card-title>-->
-<!--    </mat-card-header>-->
-<!--    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">-->
-<!--      <mat-card-content fxLayout="column">-->
-<!--        <mat-form-field fxFlex>-->
-<!--          <input matInput placeholder="Email" formControlName="email">-->
-<!--        </mat-form-field>-->
-<!--        <mat-form-field fxFlex>-->
-<!--          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"-->
-<!--                 formControlName="password">-->
-<!--          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"-->
-<!--                  [attr.aria-pressed]="hide">-->
-<!--            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-<!--          </button>-->
-<!--        </mat-form-field>-->
-<!--      </mat-card-content>-->
-<!--      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>-->
-<!--      <p *ngIf="onError" class="error">An error occurred</p>-->
-<!--    </form>-->
-<!--  </mat-card>-->
-<!--</div>-->
+<div class="home-container">
+  <div class="home-header">
+  <button class="home-create-post" mat-raised-button (click)="createPost()" [attr.aria-label]="'Create Post'">Créer un article</button>
+<!--    <mat-select placeholder="Trier par" [(value)]="sort" (selectionChange)="sortPosts($event)">-->
+<!--      <mat-option [value]="'date'">Date</mat-option>-->
+<!--    </mat-select>-->
+  </div>
+  <app-post-layout></app-post-layout>
+</div>
