@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {PostService} from "./services/post.service";
 import {PostComponent} from "./post/post.component";
 import {Post} from "./interfaces/post.interface";
@@ -20,7 +19,6 @@ export class PostLayoutComponent implements OnInit, OnDestroy {
   private $post!: Subscription;
 
   constructor(
-    private router: Router,
     private postService: PostService
     ) {
   }
