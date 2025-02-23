@@ -22,13 +22,13 @@ public class CommentController {
     private JWTService jwtService;
 
     @PostMapping()
-    public void addComment(
+    public CommentResponse addComment(
         @RequestBody CommentRequest commentRequest,
         HttpServletRequest request
     ) {
         String token = request.getHeader("Authorization").substring(7);
         String email = jwtService.getSubjectFromToken(token);
-        commentService.createComment(commentRequest, email);
+        return commentService.createComment(commentRequest, email);
     }
 
     @GetMapping("/{postId}")

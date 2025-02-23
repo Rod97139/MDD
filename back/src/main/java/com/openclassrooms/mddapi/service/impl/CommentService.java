@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.service.impl;
 
 import com.openclassrooms.mddapi.dto.CommentDto;
 import com.openclassrooms.mddapi.dto.payload.request.CommentRequest;
+import com.openclassrooms.mddapi.dto.payload.response.CommentResponse;
 import com.openclassrooms.mddapi.mapper.CommentMapper;
 import com.openclassrooms.mddapi.model.Comment;
 import com.openclassrooms.mddapi.model.Post;
@@ -35,7 +36,7 @@ public class CommentService implements ICommentService {
     }
 
     @Override
-    public void createComment(CommentRequest commentRequest, String email) {
+    public CommentResponse createComment(CommentRequest commentRequest, String email) {
         Post post = postRepository.findById(commentRequest.getPostId()).orElseThrow(() -> new RuntimeException("Post not found"));
         User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
         Comment comment = new Comment(
@@ -46,6 +47,7 @@ public class CommentService implements ICommentService {
                 post,
                 user
         );
-        commentRepository.save(comment);
+        Comment commentSaved = commentRepository.save(comment);
+        return CommentMapper.toResponse(CommentMapper.toDto(commentSaved));
     }
 }
