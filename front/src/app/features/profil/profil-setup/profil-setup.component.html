@@ -1,14 +1,14 @@
 <div class="profil-setup">
   <mat-card>
-    <mat-card-header fxLayoutAlign="center center">
+    <mat-card-header>
       <mat-card-title>Profil utilisateur</mat-card-title>
     </mat-card-header>
     <form class="update-user-form" [formGroup]="form" (ngSubmit)="submit()">
-      <mat-card-content fxLayout="column">
-        <mat-form-field fxFlex>
+      <mat-card-content>
+        <mat-form-field>
           <input matInput placeholder="Name" formControlName="name">
         </mat-form-field>
-        <mat-form-field fxFlex>
+        <mat-form-field>
           <input matInput placeholder="Email" formControlName="email">
         </mat-form-field>
       </mat-card-content>

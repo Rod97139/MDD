@@ -38,7 +38,7 @@ public class PostMapper {
                 post.getId(),
                 post.getTitle(),
                 post.getContent(),
-                post.getTopic().getId(),
+                TopicMapper.mapFromTopicToTopicDto(post.getTopic()),
                 UserMapper.mapFromUserToUserDisplayDto(post.getUser()),
                 post.getCreatedAt().toString(),
                 post.getUpdatedAt().toString()
@@ -51,7 +51,7 @@ public class PostMapper {
                 post.getId(),
                 post.getTitle(),
                 post.getContent(),
-                post.getTopic().getId(),
+                TopicMapper.mapFromTopicToTopicDto(post.getTopic()),
                 UserMapper.mapFromUserToUserDisplayDto(post.getUser()),
                 post.getCreatedAt().toString(),
                 post.getUpdatedAt().toString()

@@ -1,7 +1,7 @@
 <div class="post-container" (click)="navigateToDetails()">
+  <h2>{{ post.title }}</h2>
   <div class="post-header">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.author.name }}</p>
+    <span>{{ post.createdAt | date }}</span> <span>{{ post.author.name }}</span>
   </div>
   <div class="post-content">
     <p>{{ post.content }}</p>
