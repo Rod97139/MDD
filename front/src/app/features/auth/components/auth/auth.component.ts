@@ -4,6 +4,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,8 @@ import {Router} from "@angular/router";
     MatCard,
     MatFormField,
     MatIcon,
-    MatButton
+    MatButton,
+    NgOptimizedImage
   ],
   styleUrls: ['./auth.component.scss']
 })
