@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {AuthService} from "./features/auth/services/auth.service";
 import {Router} from "@angular/router";
 import {SessionService} from "./services/session.service";
@@ -15,11 +15,18 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private renderer: Renderer2
   ) {}
 
   public ngOnInit(): void {
     this.autoLog();
+    this.renderer.listen('document', 'click', (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.header-links') && !target.closest('.menu-hamburger')) {
+        document.querySelector('.header-links')?.classList.remove('open');
+      }
+    });
   }
 
   public $isLogged(): Observable<boolean> {
@@ -35,6 +42,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.sessionService.logOut();
       }
     )
+  }
+
+  toggleMenu() {
+    document.querySelector('.header-links')?.classList.toggle('open');
   }
 
   public ngOnDestroy(): void {
