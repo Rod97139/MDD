@@ -18,6 +18,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
 import {TopicLayoutComponent} from "./features/topic/components/topic-layout/topic-layout.component";
 import {NgOptimizedImage} from "@angular/common";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatSelect} from "@angular/material/select";
 
 const materialModule = [
   MatButtonModule,
@@ -44,7 +46,9 @@ const materialModule = [
     ReactiveFormsModule,
     PostLayoutComponent,
     TopicLayoutComponent,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatOption,
+    MatSelect
   ],
   providers: [
     provideAnimationsAsync(),
