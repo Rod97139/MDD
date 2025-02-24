@@ -8,6 +8,8 @@ import {CreatePostComponent} from "./pages/create-post/create-post.component";
 import {PostLayoutComponent} from "./pages/post-layout/post-layout.component";
 import {ProfilComponent} from "./pages/profil/profil.component";
 import {PostDetailsComponent} from "./pages/post-details/post-details.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {NumberGuard} from "./guards/number.guard";
 
 const routes: Routes = [
   {
@@ -37,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'post-details/:id',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, NumberGuard],
     component: PostDetailsComponent
   },
   {
@@ -46,8 +48,9 @@ const routes: Routes = [
     component: CreatePostComponent
   },
 
-  // { path: '404', component: NotFoundComponent },
-  // { path: '**', redirectTo: '404' }
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' },
+
 ];
 
 @NgModule({
